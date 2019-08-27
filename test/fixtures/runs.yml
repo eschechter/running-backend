@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  finalized: false
+  completed: false
+  coordinates: 
+  user: one
+
+two:
+  finalized: false
+  completed: false
+  coordinates: 
+  user: two
