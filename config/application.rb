@@ -23,7 +23,7 @@ module RunningBackend
       allow do
         origins "*"
 
-        resource "*", :headers => :any, :methods => [:get, :post, :delete]
+        resource "*", :headers => :any, :methods => [:get, :post, :delete, :patch]
       end
     end
     # Initialize configuration defaults for originally generated Rails version.
