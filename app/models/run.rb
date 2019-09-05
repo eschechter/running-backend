@@ -1,6 +1,7 @@
 class Run < ApplicationRecord
   belongs_to :user
   before_create :coordinates_fixer
+  before_create :false_bools
 
   private
 
@@ -12,5 +13,10 @@ class Run < ApplicationRecord
 
   def coordinates_fixer
     self.coordinates = coords_to_points(coordinates)
+  end
+
+  def false_bools
+    self.completed = false
+    self.finalized = false
   end
 end
