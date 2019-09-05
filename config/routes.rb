@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   patch "/runs/:id", to: "runs#update"
 
   get "/users/:user_id/runs", to: "users#fetch_runs"
+  get "/users/:user_id/search", to: "users#show_all"
   get "/users/:user_id/search/:search_term", to: "users#search"
 
   get "/users/:user_id/friends", to: "users#fetch_friends"
@@ -16,5 +17,5 @@ Rails.application.routes.draw do
   get "/users/:user_id/request-receivers", to: "users#fetch_request_receivers"
 
   post "/users/request/:request_sender_id/:request_receiver_id", to: "users#request_friend"
-  post "/users/complete_request/:request_sender_id/:request_receiver_id", to: "request#complete_request"
+  post "/users/complete_request/:request_receiver_id/:request_sender_id", to: "requests#complete"
 end

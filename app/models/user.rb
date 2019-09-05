@@ -8,9 +8,12 @@ class User < ApplicationRecord
   has_many :received_requests, foreign_key: :request_receiver_id, class_name: "Request"
   has_many :request_senders, through: :received_requests
 
-  def self.search_users(id, search_string)
+  def search_for_friends(search_string)
     User.all.select do |user|
-      user.id != id.to_i && user.name.downcase.start_with?(search_string.downcase)
+      user.id != id.to_i &&
+        user.name.downcase.start_with?(search_string.downcase) &&
+        !request_senders.include?(user) &&
+        !request_receivers.include?(user)
     end
   end
 

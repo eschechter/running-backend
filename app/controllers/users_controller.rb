@@ -15,8 +15,15 @@ class UsersController < ApplicationController
   end
 
   def search
-    users = User.search_users(params[:user_id], params[:search_term])
+    user = User.find(params[:user_id])
+    users = user.search_for_friends(params[:search_term])
     render json: users
+  end
+
+  def show_all
+    user = User.find(params[:user_id])
+    users = user.search_for_friends("")
+    render json: users, only: [:id, :name, :email]
   end
 
   def request_friend
@@ -24,7 +31,7 @@ class UsersController < ApplicationController
     request_receiver = User.find(params[:request_receiver_id])
     request_sender.request_receivers << request_receiver
 
-    render json: { request_receiver_id: request_receiver.id }
+    render json: request_receiver, only: [:id, :name, :email]
   end
 
   def fetch_request_senders
