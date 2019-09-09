@@ -13,7 +13,7 @@ class AuthController < ApplicationController
     token = request.headers["Authorization"]
     user_id = JWT.decode(token, "secret")[0]["user_id"]
     user = User.find(user_id)
-    render json: { id: user.id, email: user.email, name: user.name }
+    render json: user, only: [:id, :email, :name], include: [runs: { only: [:id] }]
   end
 
   private

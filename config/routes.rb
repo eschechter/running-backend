@@ -17,5 +17,5 @@ Rails.application.routes.draw do
   get "/users/:user_id/request-receivers", to: "users#fetch_request_receivers"
 
   post "/users/request/:request_sender_id/:request_receiver_id", to: "users#request_friend"
-  post "/users/complete_request/:request_receiver_id/:request_sender_id", to: "requests#complete"
+  patch "/users/complete_request/:request_receiver_id/:request_sender_id", to: "requests#complete"
 end
