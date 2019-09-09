@@ -1,4 +1,4 @@
-require_relative 'boot'
+require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -19,6 +19,13 @@ Bundler.require(*Rails.groups)
 
 module RunningBackend
   class Application < Rails::Application
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "*"
+
+        resource "*", :headers => :any, :methods => [:get, :post, :delete, :patch]
+      end
+    end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
