@@ -18,6 +18,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem "jwt", "~> 2.2"
 
+
+gem 'rest-client'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

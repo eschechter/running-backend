@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def fetch_runs
     user = User.find(params[:user_id])
-    render json: user.runs, only: [:id, :length, :duration, :completed]
+    render json: user.runs, only: [:id, :length, :duration, :completed, :user_id, :city]
   end
 
   def create
@@ -48,7 +48,9 @@ class UsersController < ApplicationController
 
   def fetch_friends
     user = User.find(params[:user_id])
-    render json: user.friends, only: [:id, :name, :email]
+    render json: user.friends,
+           only: [:id, :name, :email],
+           include: [runs: { only: [:id, :length, :duration, :completed, :city] }]
   end
 
   private
