@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
+
+  validates :email, uniqueness: true
+
   has_many :runs
 
   has_many :sent_requests, foreign_key: :request_sender_id, class_name: "Request"
