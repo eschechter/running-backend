@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(user_params)
     if user.valid?
-      token = JWT.encode({ user_id: user.id }, "secret")
+      token = JWT.encode({ user_id: user.id }, ENV["TOKEN_SECRET"])
       render json: { user: { id: user.id, email: user.email, name: user.name }, jwt: token }
     else
       render json: { error: "failed to create user" }
