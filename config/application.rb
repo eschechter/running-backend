@@ -16,12 +16,13 @@ require "rails/test_unit/railtie"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
+Dotenv::Railtie.load
 
 module RunningBackend
   class Application < Rails::Application
     Rails.application.config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins "running-mate.herokuapp.com"
+        origins ENV["CORS_ORIGINS"]
 
         resource "*", :headers => :any, :methods => [:get, :post, :delete, :patch]
       end
