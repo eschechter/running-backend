@@ -1,24 +1,15 @@
-# README
+This repo is the backend for a running app hosted at https://github.com/eschechter/running-frontend. For more information on the application, please see the README in that repo.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+To get the backend running, clone the directory and run 
 
-Things you may want to cover:
+### `bundle`
 
-* Ruby version
+For this to work, you'll need to have upgraded to Ruby 2.6.4 and have postgresql installed on your computer. Next, run 
 
-* System dependencies
+### `rails db:setup`
 
-* Configuration
+to create and seed the database. Then, run 
 
-* Database creation
+### `rails s`
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+to start the server. Finally, refer to the instructions in https://github.com/eschechter/running-frontend to get the React frontend up and running.
